@@ -1,3 +1,2 @@
 # CS169
-huang wei is not sb
-lbj is sb
+Android APP to test the approach by acoustic reflection.

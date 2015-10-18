@@ -18,11 +18,13 @@ public class ButtonListener implements Button.OnClickListener{
         switch (button_id) {
             case R.id.button_record:
                 view.setVisibility(View.INVISIBLE);
+                ((Activity) mContext).findViewById(R.id.button_play).setVisibility(View.INVISIBLE);
                 TaskRecord recordTask = new TaskRecord(mContext);
                 recordTask.execute();
                 break;
             case R.id.button_play:
                 view.setVisibility(View.INVISIBLE);
+                ((Activity) mContext).findViewById(R.id.button_record).setVisibility(View.INVISIBLE);
                 TaskPlay playTask = new TaskPlay(mContext);
                 playTask.execute();
                 break;

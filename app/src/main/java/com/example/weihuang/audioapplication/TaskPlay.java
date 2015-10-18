@@ -17,12 +17,20 @@ import java.io.IOException;
 public class TaskPlay extends AsyncTask<Void, Integer, Void> {
 
     private Context mContext;
+    private String filePath = Environment.getExternalStorageDirectory().getAbsolutePath()
+    + "/data/files/" + "recording.pcm";
     private File audioFile;
 
     public TaskPlay(Context context) {
         mContext = context;
-        audioFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/data/files/recording.pcm");
+        audioFile = new File(filePath);
+        try {
+            audioFile.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
     @Override
     protected Void doInBackground(Void... voids) {
 
@@ -65,6 +73,9 @@ public class TaskPlay extends AsyncTask<Void, Integer, Void> {
     }
 
     protected void onPostExecute(Void result) {
+        ((Activity) mContext)
+                .findViewById(R.id.button_play)
+                .setVisibility(View.VISIBLE);
         ((Activity) mContext)
                 .findViewById(R.id.button_record)
                 .setVisibility(View.VISIBLE);

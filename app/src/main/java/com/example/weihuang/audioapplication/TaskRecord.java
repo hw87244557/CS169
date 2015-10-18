@@ -20,22 +20,15 @@ import java.io.IOException;
 class TaskRecord extends AsyncTask<Void, Integer, Void> {
 
     private Context mContext;
-    private File audioFile;
+    private String fpath;
     private static int[] mSampleRates = new int[] { 8000, 11025, 22050, 44100 };
 
 
     public TaskRecord(Context context) {
         mContext = context;
-        try {
-            //在这里我们创建一个文件，用于保存录制内容
-            File fpath = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/data/files/");
-            fpath.mkdirs();//创建文件夹
-
-            //创建临时文件，注意这里的格式为.pcm
-            audioFile = File.createTempFile("recording",".pcm",fpath);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        fpath = Environment.getExternalStorageDirectory().getAbsolutePath()
+                + "/data/files/"
+                + "recording.pcm";
     }
 
     @Override
@@ -44,7 +37,7 @@ class TaskRecord extends AsyncTask<Void, Integer, Void> {
         try {
             //开通输出流到指定的文件
             DataOutputStream dataOutputStream = new DataOutputStream(
-                    new BufferedOutputStream(new FileOutputStream(audioFile)));
+                    new BufferedOutputStream(new FileOutputStream(fpath, false)));
             //根据配置信息，来获得合适的缓冲大小
             int bufferSize = AudioRecord.getMinBufferSize(
                     Constants.frequence,
@@ -87,6 +80,9 @@ class TaskRecord extends AsyncTask<Void, Integer, Void> {
     protected void onPostExecute(Void result) {
         ((Activity) mContext)
                 .findViewById(R.id.button_play)
+                .setVisibility(View.VISIBLE);
+        ((Activity) mContext)
+                .findViewById(R.id.button_record)
                 .setVisibility(View.VISIBLE);
     }
 

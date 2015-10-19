@@ -18,7 +18,7 @@ public class TaskPlay extends AsyncTask<Void, Integer, Void> {
 
     private Context mContext;
     private String filePath = Environment.getExternalStorageDirectory().getAbsolutePath()
-    + "/recording.pcm";
+    + "/data/files/" + "recording0.pcm";
     private File audioFile;
 
     public TaskPlay(Context context) {

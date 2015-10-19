@@ -12,6 +12,7 @@ import android.view.View;
 
 import java.io.BufferedOutputStream;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -24,10 +25,15 @@ class TaskRecord extends AsyncTask<Void, Integer, Void> {
 
     public TaskRecord(Context context) {
         mContext = context;
+
+        File folderPath = new File(Environment.getExternalStorageDirectory().getAbsoluteFile() + "/data/files/");
+        folderPath.mkdirs();
+        int fileNum = folderPath.listFiles().length;
+
         fpath = Environment.getExternalStorageDirectory().getAbsolutePath();
-        //fpath += "/data/files/";
-        fpath += "/recording.pcm";
-        //fpath = context.getFilesDir() + "/" + "recording.pcm";
+        fpath += "/data/files/";
+        fpath += "/recording" + Integer.toString(fileNum) + ".pcm";
+
         int a = 1;
     }
 

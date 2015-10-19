@@ -1,0 +1,11 @@
+audiodata1 = trimSync(csvread('./test4/outputfile1.csv'));
+audiodata2 = trimSync(csvread('./test4/outputfile2.csv'));
+audiodata3 = trimSync(csvread('./test4/outputfile3.csv'));
+audiodata4 = trimSync(csvread('./test4/outputfile4.csv'));
+audiodata5 = trimSync(csvread('./test4/outputfile5.csv'));
+audiodata6 = trimSync(csvread('./test4/outputfile6.csv'));
+audio_avg1 = (audiodata1 + audiodata2 + audiodata3)/3;
+audio_avg2 = (audiodata4 + audiodata5 + audiodata6)/3;
+plot(audio_avg2);
+hold;
+plot(audio_avg1);

@@ -9,8 +9,8 @@ import java.io.IOException;
 
 public class Test {
 	public static void main(String[] args) {
-		String filePath = "recording.pcm";
-		String outputFilePath = "outputfile.csv";
+		String filePath = "recording" + args[0] + ".pcm";
+		String outputFilePath = "outputfile" + args[0] + ".csv";
 		int bufferSize = 2048;
 		short[] buffer = new short[bufferSize/4];
 		try {

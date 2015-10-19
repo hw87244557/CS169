@@ -10,7 +10,7 @@ import java.io.IOException;
 public class Test {
 	public static void main(String[] args) {
 		String filePath = "recording.pcm";
-		String outputFilePath = "outputfile.txt";
+		String outputFilePath = "outputfile.csv";
 		int bufferSize = 2048;
 		short[] buffer = new short[bufferSize/4];
 		try {

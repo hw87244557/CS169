@@ -1,3 +1,3 @@
-audiodata = fread(fopen('recording.pcm'), inf, 'short');
+audiodata = csvread('outputfile.csv');
 player = audioplayer(audiodata, 44100);
 playblocking(player);

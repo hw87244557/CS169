@@ -24,9 +24,11 @@ class TaskRecord extends AsyncTask<Void, Integer, Void> {
 
     public TaskRecord(Context context) {
         mContext = context;
-        fpath = Environment.getExternalStorageDirectory().getAbsolutePath()
-                + "/data/files/"
-                + "recording.pcm";
+        fpath = Environment.getExternalStorageDirectory().getAbsolutePath();
+        //fpath += "/data/files/";
+        fpath += "/recording.pcm";
+        //fpath = context.getFilesDir() + "/" + "recording.pcm";
+        int a = 1;
     }
 
     @Override

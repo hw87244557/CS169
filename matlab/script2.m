@@ -18,6 +18,6 @@ audio_avg2 = (audiodata4 + audiodata5 + audiodata6)/3;
 audio_avg3 = (audiodata7 + audiodata8 + audiodata9)/3;
 plot(audio_avg3);
 hold;
-% plot(audio_avg2);
+plot(audio_avg2);
 % hold;
 plot(audio_avg1);

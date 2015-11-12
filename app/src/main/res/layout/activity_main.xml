@@ -10,17 +10,23 @@
         android:layout_width="120dp"
         android:layout_height="75dp"
         android:text="Record"
-        android:layout_above="@+id/button_play"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="47dp" />
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+    <Button
+        android:id="@+id/button_transmit"
+        android:layout_width="120dp"
+        android:layout_height="75dp"
+        android:text="Transmit"
+        android:layout_above="@+id/textView"
+        android:layout_alignStart="@+id/button_record" />
     <Button
         android:id="@+id/button_play"
         android:layout_width="120dp"
         android:layout_height="75dp"
         android:text="Play"
-        android:layout_marginBottom="182dp"
+        android:layout_marginBottom="77dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignStart="@+id/button_transmit" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -1,3 +1,0 @@
-audiodata1 = csvread('./test4/outputfile1.csv');
-audiodata2 = csvread('./test4/outputfile2.csv');
-compare(a

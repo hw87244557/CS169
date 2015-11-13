@@ -5,6 +5,8 @@ import android.content.Context;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
+import android.media.audiofx.AcousticEchoCanceler;
+import android.media.audiofx.AutomaticGainControl;
 import android.os.AsyncTask;
 import android.os.Environment;
 import android.util.Log;
@@ -60,6 +62,13 @@ class TaskRecord extends AsyncTask<Void, Integer, Void> {
             short[] buffer = new short[bufferSize];
 
 //            AudioRecord audioRecord = findAudioRecord();
+
+            int sessionID = audioRecord.getAudioSessionId();
+            AcousticEchoCanceler acousticEchoCanceler = AcousticEchoCanceler.create(sessionID);
+            acousticEchoCanceler.setEnabled(false);
+            AutomaticGainControl automaticGainControl = AutomaticGainControl.create(sessionID);
+            automaticGainControl.setEnabled(false);
+
             //开始录制
             audioRecord.startRecording();
             int r = 0;//存储录制进度

@@ -20,10 +20,15 @@ public class ButtonListener implements Button.OnClickListener{
     @Override
     public void onClick(View view) {
         int button_id  = view.getId();
+        TaskTransmit taskTransmit;
         switch (button_id) {
             case R.id.button_record:
                 view.setVisibility(View.INVISIBLE);
                 ((Activity) mContext).findViewById(R.id.button_play).setVisibility(View.INVISIBLE);
+                /* auto play */
+                taskTransmit = new TaskTransmit(mToneCreator);
+                taskTransmit.execute();
+                /* auto play */
                 TaskRecord recordTask = new TaskRecord(mContext);
                 recordTask.execute();
                 break;
@@ -34,7 +39,7 @@ public class ButtonListener implements Button.OnClickListener{
                 playTask.execute();
                 break;
             case R.id.button_transmit:
-                TaskTransmit taskTransmit = new TaskTransmit(mToneCreator);
+                taskTransmit = new TaskTransmit(mToneCreator);
                 taskTransmit.execute();
                 break;
         }

@@ -47,7 +47,7 @@ public class ToneCreator {
             }
             for (int s = (int) (sampleRate*EmptyRatio) + d * sampleRate; s < sampleRate*(d+1); s=s+2) {
                 // scale to maximum amplitude
-                final short val = (short) ((sample[s] * 12767));
+                final short val = (short) ((sample[s] * 2767));
                 // in 16 bit wav PCM, first byte is the low order byte
                 generatedSnd[s] = (byte) (val & 0x00ff);
                 generatedSnd[s+1] = (byte) ((val & 0xff00) >>> 8);

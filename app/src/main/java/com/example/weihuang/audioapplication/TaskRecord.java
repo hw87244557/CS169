@@ -23,6 +23,7 @@ class TaskRecord extends AsyncTask<Void, Integer, Void> {
     private Context mContext;
     private String fpath;
     private static int[] mSampleRates = new int[] { 8000, 11025, 22050, 44100 };
+    private boolean isRecording = false;
 
 
     public TaskRecord(Context context) {
@@ -36,7 +37,6 @@ class TaskRecord extends AsyncTask<Void, Integer, Void> {
         fpath += "/data/files/";
         fpath += "/recording" + Integer.toString(fileNum) + ".pcm";
 
-        int a = 1;
     }
 
     @Override
@@ -64,16 +64,21 @@ class TaskRecord extends AsyncTask<Void, Integer, Void> {
 //            AudioRecord audioRecord = findAudioRecord();
 
             int sessionID = audioRecord.getAudioSessionId();
-            AcousticEchoCanceler acousticEchoCanceler = AcousticEchoCanceler.create(sessionID);
-            acousticEchoCanceler.setEnabled(false);
-            AutomaticGainControl automaticGainControl = AutomaticGainControl.create(sessionID);
-            automaticGainControl.setEnabled(false);
+            if (AcousticEchoCanceler.isAvailable()) {
+                AcousticEchoCanceler acousticEchoCanceler = AcousticEchoCanceler.create(sessionID);
+                acousticEchoCanceler.setEnabled(false);
+            }
+            if (AutomaticGainControl.isAvailable()) {
+                AutomaticGainControl automaticGainControl = AutomaticGainControl.create(sessionID);
+                automaticGainControl.setEnabled(false);
+            }
 
             //开始录制
             audioRecord.startRecording();
+            isRecording = true;
             int r = 0;//存储录制进度
             //定义循环，根据进度判断是否继续录制
-            while (r < 100) {
+            while (r < 100 && isRecording) {
                 //从buffer中读取字节，返回读取的数据的个数
                 int bufferNumRead = audioRecord.read(buffer, 0,buffer.length);
                 //循环将buffer中的音频数据写入当OutputStream中
@@ -99,6 +104,10 @@ class TaskRecord extends AsyncTask<Void, Integer, Void> {
         ((Activity) mContext)
                 .findViewById(R.id.button_record)
                 .setVisibility(View.VISIBLE);
+    }
+
+    public void stopRecord() {
+        isRecording = false;
     }
 
     public AudioRecord findAudioRecord() {

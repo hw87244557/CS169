@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class MainActivity extends ActionBarActivity {
 
-    private Button buttonRecord, buttonPlay, buttonTransmit;
+    private Button buttonRecord, buttonPlay, buttonStop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,13 +17,13 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         buttonRecord = (Button) findViewById(R.id.button_record);
         buttonPlay = (Button) findViewById(R.id.button_play);
-        buttonTransmit = (Button) findViewById(R.id.button_transmit);
+        buttonStop = (Button) findViewById(R.id.button_stop);
         ButtonListener buttonListener = new ButtonListener();
         buttonListener.setContext(this);
         buttonListener.setToneCreator(new ToneCreator());
         buttonRecord.setOnClickListener(buttonListener);
         buttonPlay.setOnClickListener(buttonListener);
-        buttonTransmit.setOnClickListener(buttonListener);
+        buttonStop.setOnClickListener(buttonListener);
     }
 
     @Override

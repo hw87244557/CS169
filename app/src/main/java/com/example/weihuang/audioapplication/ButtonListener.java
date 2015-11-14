@@ -8,6 +8,8 @@ import android.widget.Button;
 public class ButtonListener implements Button.OnClickListener{
     Context mContext;
     private ToneCreator mToneCreator;
+    TaskRecord recordTask = null;
+    TaskTransmit taskTransmit = null;
 
     public void setContext(Context context) {
         mContext = context;
@@ -20,7 +22,6 @@ public class ButtonListener implements Button.OnClickListener{
     @Override
     public void onClick(View view) {
         int button_id  = view.getId();
-        TaskTransmit taskTransmit;
         switch (button_id) {
             case R.id.button_record:
                 view.setVisibility(View.INVISIBLE);
@@ -29,7 +30,7 @@ public class ButtonListener implements Button.OnClickListener{
                 taskTransmit = new TaskTransmit(mToneCreator);
                 taskTransmit.execute();
                 /* auto play */
-                TaskRecord recordTask = new TaskRecord(mContext);
+                recordTask = new TaskRecord(mContext);
                 recordTask.execute();
                 break;
             case R.id.button_play:
@@ -38,9 +39,10 @@ public class ButtonListener implements Button.OnClickListener{
                 TaskPlay playTask = new TaskPlay(mContext);
                 playTask.execute();
                 break;
-            case R.id.button_transmit:
-                taskTransmit = new TaskTransmit(mToneCreator);
-                taskTransmit.execute();
+            case R.id.button_stop:
+                if (recordTask != null) {
+                    recordTask.stopRecord();
+                }
                 break;
         }
     }

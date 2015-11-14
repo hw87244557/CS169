@@ -9,19 +9,22 @@ import android.widget.Button;
 
 public class MainActivity extends ActionBarActivity {
 
-    private Button buttonRecord, buttonPlay, buttonStop;
+    private Button buttonRecord, buttonPlay, buttonStop,buttonRecord2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         buttonRecord = (Button) findViewById(R.id.button_record);
+        buttonRecord2 = (Button) findViewById(R.id.button_record2);
         buttonPlay = (Button) findViewById(R.id.button_play);
         buttonStop = (Button) findViewById(R.id.button_stop);
         ButtonListener buttonListener = new ButtonListener();
         buttonListener.setContext(this);
-        buttonListener.setToneCreator(new ToneCreator());
+        buttonListener.setToneCreator(new ToneCreator(1));
+        buttonListener.setToneCreator2(new ToneCreator(2));
         buttonRecord.setOnClickListener(buttonListener);
+        buttonRecord2.setOnClickListener(buttonListener);
         buttonPlay.setOnClickListener(buttonListener);
         buttonStop.setOnClickListener(buttonListener);
     }

@@ -24,9 +24,8 @@
         android:layout_width="120dp"
         android:layout_height="75dp"
         android:text="Play"
-        android:layout_marginBottom="77dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/button_stop" />
+        android:layout_alignStart="@+id/button_record2" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -36,5 +35,13 @@
         android:layout_above="@+id/button_record"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="48dp" />
+
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="75dp"
+        android:text="Record 2"
+        android:id="@+id/button_record2"
+        android:layout_below="@+id/button_record"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

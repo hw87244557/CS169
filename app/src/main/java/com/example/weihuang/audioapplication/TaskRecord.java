@@ -109,6 +109,9 @@ class TaskRecord extends AsyncTask<Void, Integer, Void> {
         ((Activity) mContext)
                 .findViewById(R.id.button_record)
                 .setVisibility(View.VISIBLE);
+        ((Activity) mContext)
+                .findViewById(R.id.button_record2)
+                .setVisibility(View.VISIBLE);
     }
 
     public void stopRecord() {

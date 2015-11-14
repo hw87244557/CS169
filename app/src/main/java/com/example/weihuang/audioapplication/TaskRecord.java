@@ -63,11 +63,11 @@ class TaskRecord extends AsyncTask<Void, Integer, Void> {
 
 //            AudioRecord audioRecord = findAudioRecord();
 
-            int sessionID = audioRecord.getAudioSessionId();
-            AcousticEchoCanceler acousticEchoCanceler = AcousticEchoCanceler.create(sessionID);
-            acousticEchoCanceler.setEnabled(false);
-            AutomaticGainControl automaticGainControl = AutomaticGainControl.create(sessionID);
-            automaticGainControl.setEnabled(false);
+//            int sessionID = audioRecord.getAudioSessionId();
+//            AcousticEchoCanceler acousticEchoCanceler = AcousticEchoCanceler.create(sessionID);
+//            acousticEchoCanceler.setEnabled(false);
+//            AutomaticGainControl automaticGainControl = AutomaticGainControl.create(sessionID);
+//            automaticGainControl.setEnabled(false);
 
             //开始录制
             audioRecord.startRecording();

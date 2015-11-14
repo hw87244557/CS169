@@ -20,7 +20,6 @@ public class ToneCreator {
 //        });
 //        thread.start();
         genTone();
-
     }
 
     void genTone() {

@@ -42,6 +42,7 @@ public class ButtonListener implements Button.OnClickListener{
             case R.id.button_stop:
                 if (recordTask != null) {
                     recordTask.stopRecord();
+                    taskTransmit.stopTransmit();
                 }
                 break;
         }

@@ -10,6 +10,7 @@ public class TaskTransmit extends AsyncTask<Void, Integer, Void> {
     private int sampleRate;
     private int numSamples;
     private final byte generatedSnd[];
+    private AudioTrack audioTrack;
 
     public TaskTransmit(ToneCreator toneCreator) {
         sampleRate = toneCreator.getSampleRate();
@@ -24,13 +25,17 @@ public class TaskTransmit extends AsyncTask<Void, Integer, Void> {
     }
 
     void playSound(){
-        final AudioTrack audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC,
+        audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC,
                 sampleRate, AudioFormat.CHANNEL_CONFIGURATION_MONO,
                 AudioFormat.ENCODING_PCM_16BIT, numSamples,
                 AudioTrack.MODE_STATIC);
         audioTrack.write(generatedSnd, 0, generatedSnd.length);
-        audioTrack.setLoopPoints(0,generatedSnd.length/4,3);
+        audioTrack.setLoopPoints(0,generatedSnd.length/4,-1);
         audioTrack.play();
     }
 
+    public void stopTransmit() {
+        audioTrack.stop();
+        audioTrack.release();
+    }
 }

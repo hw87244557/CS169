@@ -83,7 +83,7 @@ class TaskRecord extends AsyncTask<Void, Integer, Void> {
             isRecording = true;
             int r = 0;//存储录制进度
             //定义循环，根据进度判断是否继续录制
-            while (r < 100 && isRecording) {
+            while (r >= 0 && isRecording) {
                 //从buffer中读取字节，返回读取的数据的个数
                 int bufferNumRead = audioRecord.read(buffer, 0,buffer.length);
                 //循环将buffer中的音频数据写入当OutputStream中

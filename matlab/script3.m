@@ -19,11 +19,20 @@ hold;
 
 half_patch_size = 10;
 length = size(med_filt_envelope,2);
+diff = zeros(1,length);
+min_value = 0;
+max_value = 0;
 for i = 1+patch_size:length-patch_size
     if med_filt_envelope(i) == min(med_filt_envelope(i-half_patch_size:i+half_patch_size))
         plot(i,med_filt_envelope(i),'.r');
+        min_value = med_filt_envelope(i);
     end
     if med_filt_envelope(i) == max(med_filt_envelope(i-half_patch_size:i+half_patch_size))
         plot(i,med_filt_envelope(i),'.g');
+        max_value = med_filt_envelope(i);
     end
+    diff(i) = max_value - min_value;
 end
+
+figure
+plot(diff);

@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 audiodata0 = csvread('./outputfile9.csv');
-=======
-audiodata0 = csvread('./test1112/outputfile5.csv');
->>>>>>> 81f1ed18b0310dea1bc33855f9142e364a1c2228
+
 figure
 plot(audiodata0);
 

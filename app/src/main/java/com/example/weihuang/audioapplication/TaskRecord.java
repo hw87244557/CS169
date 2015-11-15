@@ -46,9 +46,12 @@ class TaskRecord extends AsyncTask<Void, Integer, Void> {
     protected Void doInBackground(Void... voids) {
 
         try {
-            //开通输出流到指定的文件
-            DataOutputStream dataOutputStream = new DataOutputStream(
-                    new BufferedOutputStream(new FileOutputStream(fpath, false)));
+            DataOutputStream dataOutputStream;
+            if (isOffline) {
+                //开通输出流到指定的文件
+                dataOutputStream = new DataOutputStream(
+                        new BufferedOutputStream(new FileOutputStream(fpath, false)));
+            }
             //根据配置信息，来获得合适的缓冲大小
             int bufferSize = AudioRecord.getMinBufferSize(
                     Constants.frequence,

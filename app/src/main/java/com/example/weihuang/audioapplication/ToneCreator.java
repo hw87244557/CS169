@@ -6,7 +6,8 @@ public class ToneCreator {
     private final int sampleRate = 44100;
     private final int numSamples = duration * sampleRate;
     private final double sample[] = new double[numSamples];
-    private final double freqOfTone = 16000; // hz
+
+    private final double freqOfTone = 18000; // hz
 
     private final byte generatedSnd[] = new byte[2 * numSamples];
 
@@ -20,7 +21,6 @@ public class ToneCreator {
 //        });
 //        thread.start();
         genTone(type);
-
     }
 
     void genTone(int type) {

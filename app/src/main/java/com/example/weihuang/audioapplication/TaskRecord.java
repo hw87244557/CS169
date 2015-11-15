@@ -46,7 +46,7 @@ class TaskRecord extends AsyncTask<Void, Integer, Void> {
     protected Void doInBackground(Void... voids) {
 
         try {
-            DataOutputStream dataOutputStream;
+            DataOutputStream dataOutputStream = null;
             if (isOffline) {
                 //开通输出流到指定的文件
                 dataOutputStream = new DataOutputStream(

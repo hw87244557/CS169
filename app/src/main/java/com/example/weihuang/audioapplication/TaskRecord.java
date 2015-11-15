@@ -26,6 +26,7 @@ class TaskRecord extends AsyncTask<Void, Integer, Void> {
     private static int[] mSampleRates = new int[] { 8000, 11025, 22050, 44100 };
     private boolean isRecording = false;
     private Activity mParentActivity = null;
+    private boolean isOffline = false;
 
     public TaskRecord(Context context, Activity parentActivity) {
         mContext = context;
@@ -84,13 +85,30 @@ class TaskRecord extends AsyncTask<Void, Integer, Void> {
             audioRecord.startRecording();
             isRecording = true;
             int r = 0;//存储录制进度
+
+            BlockerDetector blockerDetector = new BlockerDetector();
+
             //定义循环，根据进度判断是否继续录制
             while (r >= 0 && isRecording) {
                 //从buffer中读取字节，返回读取的数据的个数
                 int bufferNumRead = audioRecord.read(buffer, 0,buffer.length);
-                //循环将buffer中的音频数据写入当OutputStream中
-                for(int i = 0; i < bufferNumRead; i++) {
-                    dataOutputStream.writeShort(buffer[i]);
+
+                boolean flag = false;
+                if (isOffline) {
+                    //循环将buffer中的音频数据写入当OutputStream中
+                    for (int i = 0; i < bufferNumRead; i++) {
+                        dataOutputStream.writeShort(buffer[i]);
+                    }
+                } else {
+                    for (int i = 0; i < bufferNumRead; i++) {
+                        if (blockerDetector.addValue((int) buffer[i])) {
+                            flag = true;
+                            break;
+                        }
+                    }
+                }
+                if (flag) {
+                    break;
                 }
                 r++;
             }

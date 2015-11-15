@@ -121,7 +121,9 @@ class TaskRecord extends AsyncTask<Void, Integer, Void> {
 
             //录制结束
             audioRecord.stop();
-            dataOutputStream.close();
+            if (isOffline) {
+                dataOutputStream.close();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -11,9 +11,13 @@ public class ButtonListener implements Button.OnClickListener{
     private ToneCreator mToneCreator2;
     TaskRecord recordTask = null;
     TaskTransmit taskTransmit = null;
+    private Activity mParentActivity = null;
 
-    public void setContext(Context context) {
+    public void setContext (Context context) {
         mContext = context;
+    }
+    public void setParentActivity (Activity parentActivity) {
+        mParentActivity = parentActivity;
     }
 
     public void setToneCreator(ToneCreator toneCreator) {
@@ -34,7 +38,7 @@ public class ButtonListener implements Button.OnClickListener{
                 taskTransmit = new TaskTransmit(mToneCreator);
                 taskTransmit.execute();
                 /* auto play */
-                recordTask = new TaskRecord(mContext);
+                recordTask = new TaskRecord(mContext, mParentActivity);
                 recordTask.execute();
                 break;
             case R.id.button_record2:
@@ -44,7 +48,7 @@ public class ButtonListener implements Button.OnClickListener{
                 taskTransmit = new TaskTransmit(mToneCreator2);
                 taskTransmit.execute();
                 /* auto play */
-                recordTask = new TaskRecord(mContext);
+                recordTask = new TaskRecord(mContext, mParentActivity);
                 recordTask.execute();
                 break;
             case R.id.button_play:

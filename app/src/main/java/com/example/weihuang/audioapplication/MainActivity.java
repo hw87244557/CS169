@@ -21,6 +21,7 @@ public class MainActivity extends ActionBarActivity {
         buttonStop = (Button) findViewById(R.id.button_stop);
         ButtonListener buttonListener = new ButtonListener();
         buttonListener.setContext(this);
+        buttonListener.setParentActivity(this);
         buttonListener.setToneCreator(new ToneCreator(1));
         buttonListener.setToneCreator2(new ToneCreator(2));
         buttonRecord.setOnClickListener(buttonListener);

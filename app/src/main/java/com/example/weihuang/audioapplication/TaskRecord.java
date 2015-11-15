@@ -9,6 +9,7 @@ import android.media.audiofx.AcousticEchoCanceler;
 import android.media.audiofx.AutomaticGainControl;
 import android.os.AsyncTask;
 import android.os.Environment;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
 
@@ -24,10 +25,11 @@ class TaskRecord extends AsyncTask<Void, Integer, Void> {
     private String fpath;
     private static int[] mSampleRates = new int[] { 8000, 11025, 22050, 44100 };
     private boolean isRecording = false;
+    private Activity mParentActivity = null;
 
-
-    public TaskRecord(Context context) {
+    public TaskRecord(Context context, Activity parentActivity) {
         mContext = context;
+        mParentActivity = parentActivity;
 
         File folderPath = new File(Environment.getExternalStorageDirectory().getAbsoluteFile() + "/data/files/");
         folderPath.mkdirs();
@@ -92,6 +94,10 @@ class TaskRecord extends AsyncTask<Void, Integer, Void> {
                 }
                 r++;
             }
+
+            Vibrator vibrator = (Vibrator) mParentActivity.getSystemService(Context.VIBRATOR_SERVICE);
+            vibrator.vibrate(2000);
+
             //录制结束
             audioRecord.stop();
             dataOutputStream.close();

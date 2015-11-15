@@ -1,4 +1,4 @@
-audiodata0 = csvread('./test1112/outputfile9.csv');
+audiodata0 = csvread('./outputfile9.csv');
 figure
 plot(audiodata0);
 

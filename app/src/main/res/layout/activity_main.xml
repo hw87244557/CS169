@@ -12,15 +12,16 @@
         <!--android:text="Record"-->
         <!--android:layout_centerVertical="true"-->
         <!--android:layout_centerHorizontal="true" />-->
-    <!--<Button-->
-        <!--android:id="@+id/button_stop"-->
-        <!--android:layout_width="120dp"-->
-        <!--android:layout_height="75dp"-->
-        <!--android:text="Stop"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:layout_alignParentStart="true"-->
-        <!--android:layout_alignEnd="@+id/button_record" />-->
-        <!--&lt;!&ndash;android:layout_alignStart="@+id/button_record" />&ndash;&gt;-->
+    <Button
+        android:id="@+id/button_stop"
+        android:layout_width="120dp"
+        android:layout_height="75dp"
+        android:text="Stop"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="95dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+        <!--android:layout_alignStart="@+id/button_record" />-->
     <!--<Button-->
         <!--android:id="@+id/button_play"-->
         <!--android:layout_width="120dp"-->
@@ -43,9 +44,9 @@
         android:layout_width="120dp"
         android:layout_height="75dp"
         android:text="Record"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_marginTop="97dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

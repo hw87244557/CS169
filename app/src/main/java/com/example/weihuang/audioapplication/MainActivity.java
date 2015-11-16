@@ -19,20 +19,19 @@ public class MainActivity extends ActionBarActivity {
         buttonRecord = (Button) findViewById(R.id.button_record);
 //        buttonRecord2 = (Button) findViewById(R.id.button_record2);
 //        buttonPlay = (Button) findViewById(R.id.button_play);
-//        buttonStop = (Button) findViewById(R.id.button_stop);
+        buttonStop = (Button) findViewById(R.id.button_stop);
         ButtonListener buttonListener = new ButtonListener();
-        ButtonLongListener buttonLongListener = new ButtonLongListener();
+//        ButtonLongListener buttonLongListener = new ButtonLongListener();
         buttonListener.setContext(this);
         buttonListener.setParentActivity(this);
         buttonListener.setToneCreator(new ToneCreator(1));
         buttonListener.setToneCreator2(new ToneCreator(2));
-        buttonLongListener.setContext(this);
-        buttonLongListener.setParentActivity(this);
+//        buttonLongListener.setContext(this);
+//        buttonLongListener.setParentActivity(this);
         buttonRecord.setOnClickListener(buttonListener);
 //        buttonRecord2.setOnClickListener(buttonListener);
 //        buttonPlay.setOnClickListener(buttonListener);
-//        buttonStop.setOnClickListener(buttonListener);
-        buttonRecord.setOnLongClickListener(buttonLongListener);
+        buttonStop.setOnClickListener(buttonListener);
     }
 
     @Override

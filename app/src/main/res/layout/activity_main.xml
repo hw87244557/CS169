@@ -14,13 +14,10 @@
         <!--android:layout_centerHorizontal="true" />-->
     <Button
         android:id="@+id/button_stop"
-        android:layout_width="120dp"
-        android:layout_height="75dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:text="Stop"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="95dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:visibility="gone"/>
         <!--android:layout_alignStart="@+id/button_record" />-->
     <!--<Button-->
         <!--android:id="@+id/button_play"-->
@@ -41,12 +38,8 @@
 
     <Button
         android:id="@+id/button_record"
-        android:layout_width="120dp"
-        android:layout_height="75dp"
-        android:text="Record"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="97dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Record"/>
 
 </RelativeLayout>

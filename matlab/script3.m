@@ -1,4 +1,4 @@
-audiodata0 = csvread('./outputfile9.csv');
+audiodata0 = csvread('./outputfile5.csv');
 
 figure
 plot(audiodata0);
@@ -12,7 +12,14 @@ envelope = max(reshape(trim_data, patch_size,trim_length/patch_size));
 % figure
 % plot(envelope);
 
-med_filt_envelope = medfilt1(envelope,20);
+% med_filt_envelope = medfilt1(envelope,20);
+
+med_filt_envelope = zeros(1,size(envelope,2) - 20);
+for i = 1:size(envelope,2) - 20
+    med_filt_envelope(i) = round(sum(envelope(i:i+19))/20);
+end
+
+
 
 figure
 plot(med_filt_envelope);

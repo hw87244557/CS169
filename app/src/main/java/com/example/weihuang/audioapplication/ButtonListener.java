@@ -43,7 +43,7 @@ public class ButtonListener implements Button.OnClickListener{
 //                break;
             case R.id.button_record:
                 view.setVisibility(View.INVISIBLE);
-//                ((Activity) mContext).findViewById(R.id.button_play).setVisibility(View.INVISIBLE);
+                ((Activity) mContext).findViewById(R.id.button_stop).setVisibility(View.VISIBLE);
                 /* auto play */
                 taskTransmit = new TaskTransmit(mToneCreator2);
                 taskTransmit.execute();
@@ -59,6 +59,7 @@ public class ButtonListener implements Button.OnClickListener{
 //                break;
             case R.id.button_stop:
                 if (recordTask != null) {
+                    view.setVisibility(View.INVISIBLE);
                     recordTask.stopRecord();
                     taskTransmit.stopTransmit();
                 }

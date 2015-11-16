@@ -32,7 +32,7 @@ public class BlockerDetector {
             return false;
         }
         int level_3_output = level_3(level_2_output);
-        if (count > 50000 && level_3_output > 1000) {
+        if (count > 50000 && level_3_output > 600) {
             return true;
         }
 

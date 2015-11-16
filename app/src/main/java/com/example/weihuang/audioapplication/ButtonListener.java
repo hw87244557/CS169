@@ -30,39 +30,46 @@ public class ButtonListener implements Button.OnClickListener{
     @Override
     public void onClick(View view) {
         int button_id  = view.getId();
-        switch (button_id) {
-            case R.id.button_record:
-                view.setVisibility(View.INVISIBLE);
-                ((Activity) mContext).findViewById(R.id.button_play).setVisibility(View.INVISIBLE);
-                /* auto play */
-                taskTransmit = new TaskTransmit(mToneCreator);
-                taskTransmit.execute();
-                /* auto play */
-                recordTask = new TaskRecord(mContext, mParentActivity);
-                recordTask.execute();
-                break;
-            case R.id.button_record2:
-                view.setVisibility(View.INVISIBLE);
-                ((Activity) mContext).findViewById(R.id.button_play).setVisibility(View.INVISIBLE);
-                /* auto play */
-                taskTransmit = new TaskTransmit(mToneCreator2);
-                taskTransmit.execute();
-                /* auto play */
-                recordTask = new TaskRecord(mContext, mParentActivity);
-                recordTask.execute();
-                break;
-            case R.id.button_play:
-                view.setVisibility(View.INVISIBLE);
-                ((Activity) mContext).findViewById(R.id.button_record).setVisibility(View.INVISIBLE);
-                TaskPlay playTask = new TaskPlay(mContext);
-                playTask.execute();
-                break;
-            case R.id.button_stop:
-                if (recordTask != null) {
-                    recordTask.stopRecord();
-                    taskTransmit.stopTransmit();
-                }
-                break;
-        }
+        //view.setVisibility(View.INVISIBLE);
+        /* auto play */
+        taskTransmit = new TaskTransmit(mToneCreator2);
+        taskTransmit.execute();
+        /* auto record */
+        recordTask = new TaskRecord(mContext, mParentActivity);
+        recordTask.execute();
+//        switch (button_id) {
+////            case R.id.button_record:
+////                view.setVisibility(View.INVISIBLE);
+////                ((Activity) mContext).findViewById(R.id.button_play).setVisibility(View.INVISIBLE);
+////                /* auto play */
+////                taskTransmit = new TaskTransmit(mToneCreator);
+////                taskTransmit.execute();
+////                /* auto play */
+////                recordTask = new TaskRecord(mContext, mParentActivity);
+////                recordTask.execute();
+////                break;
+//            case R.id.button_record:
+//                view.setVisibility(View.INVISIBLE);
+////                ((Activity) mContext).findViewById(R.id.button_play).setVisibility(View.INVISIBLE);
+//                /* auto play */
+//                taskTransmit = new TaskTransmit(mToneCreator2);
+//                taskTransmit.execute();
+//                /* auto play */
+//                recordTask = new TaskRecord(mContext, mParentActivity);
+//                recordTask.execute();
+//                break;
+////            case R.id.button_play:
+////                view.setVisibility(View.INVISIBLE);
+////                ((Activity) mContext).findViewById(R.id.button_record).setVisibility(View.INVISIBLE);
+////                TaskPlay playTask = new TaskPlay(mContext);
+////                playTask.execute();
+////                break;
+//            case R.id.button_stop:
+//                if (recordTask != null) {
+//                    recordTask.stopRecord();
+//                    taskTransmit.stopTransmit();
+//                }
+//                break;
+//        }
     }
 }

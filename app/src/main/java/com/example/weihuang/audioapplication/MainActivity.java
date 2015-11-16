@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 
 
@@ -16,18 +17,22 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         buttonRecord = (Button) findViewById(R.id.button_record);
-        buttonRecord2 = (Button) findViewById(R.id.button_record2);
-        buttonPlay = (Button) findViewById(R.id.button_play);
-        buttonStop = (Button) findViewById(R.id.button_stop);
+//        buttonRecord2 = (Button) findViewById(R.id.button_record2);
+//        buttonPlay = (Button) findViewById(R.id.button_play);
+//        buttonStop = (Button) findViewById(R.id.button_stop);
         ButtonListener buttonListener = new ButtonListener();
+        ButtonLongListener buttonLongListener = new ButtonLongListener();
         buttonListener.setContext(this);
         buttonListener.setParentActivity(this);
         buttonListener.setToneCreator(new ToneCreator(1));
         buttonListener.setToneCreator2(new ToneCreator(2));
+        buttonLongListener.setContext(this);
+        buttonLongListener.setParentActivity(this);
         buttonRecord.setOnClickListener(buttonListener);
-        buttonRecord2.setOnClickListener(buttonListener);
-        buttonPlay.setOnClickListener(buttonListener);
-        buttonStop.setOnClickListener(buttonListener);
+//        buttonRecord2.setOnClickListener(buttonListener);
+//        buttonPlay.setOnClickListener(buttonListener);
+//        buttonStop.setOnClickListener(buttonListener);
+        buttonRecord.setOnLongClickListener(buttonLongListener);
     }
 
     @Override

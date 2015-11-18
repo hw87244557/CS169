@@ -3,7 +3,9 @@ package com.example.weihuang.audioapplication;
 import android.app.Activity;
 import android.content.Context;
 import android.media.AudioFormat;
+import android.media.AudioManager;
 import android.media.AudioRecord;
+import android.media.AudioTrack;
 import android.media.MediaRecorder;
 import android.media.audiofx.AcousticEchoCanceler;
 import android.media.audiofx.AutomaticGainControl;
@@ -91,12 +93,13 @@ class TaskRecord extends AsyncTask<Void, Integer, Void> {
 
             BlockerDetector blockerDetector = new BlockerDetector();
 
+            boolean flag = false;
             //定义循环，根据进度判断是否继续录制
             while (r >= 0 && isRecording) {
                 //从buffer中读取字节，返回读取的数据的个数
                 int bufferNumRead = audioRecord.read(buffer, 0,buffer.length);
 
-                boolean flag = false;
+
                 if (isOffline) {
                     //循环将buffer中的音频数据写入当OutputStream中
                     for (int i = 0; i < bufferNumRead; i++) {
@@ -116,8 +119,27 @@ class TaskRecord extends AsyncTask<Void, Integer, Void> {
                 r++;
             }
 
-            Vibrator vibrator = (Vibrator) mParentActivity.getSystemService(Context.VIBRATOR_SERVICE);
-            vibrator.vibrate(2000);
+            if (flag) {
+                int sampleRate;
+                int numSamples;
+                final byte generatedSnd[];
+                AudioTrack audioTrack;
+                ToneCreator toneCreator = new ToneCreator(1);
+
+                sampleRate = toneCreator.getSampleRate();
+                numSamples = toneCreator.getNumSamples();
+                generatedSnd = toneCreator.getGeneratedSnd();
+
+                audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC,
+                        sampleRate, AudioFormat.CHANNEL_CONFIGURATION_MONO,
+                        AudioFormat.ENCODING_PCM_16BIT, numSamples,
+                        AudioTrack.MODE_STATIC);
+                audioTrack.write(generatedSnd, 0, generatedSnd.length);
+                audioTrack.play();
+            }
+
+//            Vibrator vibrator = (Vibrator) mParentActivity.getSystemService(Context.VIBRATOR_SERVICE);
+//            vibrator.vibrate(2000);
 
             //录制结束
             audioRecord.stop();

@@ -7,7 +7,7 @@ public class ToneCreator {
     private final int numSamples = duration * sampleRate;
     private final double sample[] = new double[numSamples];
 
-    private final double freqOfTone = 18000; // hz
+    private double freqOfTone = 18000; // hz
 
     private final byte generatedSnd[] = new byte[2 * numSamples];
 
@@ -24,6 +24,11 @@ public class ToneCreator {
     }
 
     void genTone(int type) {
+
+        if (type == 1) {
+            freqOfTone = 2000;//Frequency for alert
+        }
+
         // fill out the array
         for (int i = 0; i < numSamples; ++i) {
             sample[i] = Math.sin(2 * Math.PI * i / (sampleRate/freqOfTone));

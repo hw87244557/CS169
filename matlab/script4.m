@@ -16,6 +16,7 @@ fmax=12000;f1=1;f2=5;f3=10; %信号不同频率值
 B1=fmax; %设置低通滤波器带宽，准备调用低通滤波器
 [t,mt1_t]=RECT_HPF(f,mt1f',B1); %低通滤波器滤除高频，由B1决定
 [f,mt1_tf]=FFT_SHIFT(t,mt1_t); %2.傅里叶正变换
+mt1_t = fliplr(mt1_t);
 
 %时域、频域显示
 subplot(311);

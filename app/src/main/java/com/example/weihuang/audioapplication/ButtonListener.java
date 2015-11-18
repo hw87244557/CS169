@@ -60,8 +60,8 @@ public class ButtonListener implements Button.OnClickListener{
             case R.id.button_stop:
                 if (recordTask != null) {
                     view.setVisibility(View.INVISIBLE);
-                    recordTask.stopRecord();
                     taskTransmit.stopTransmit();
+                    recordTask.stopRecord();
                 }
                 break;
         }
